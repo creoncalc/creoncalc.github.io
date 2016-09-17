@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Creon Calc</title>
+<style>
+#calc, #settings {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+	font-size:220%;
+	line-height:1.2;
+    text-align: left;	
+}
+
+#calc td, #calc th, #settings td, #settings th {
+    border: 1px solid #ddd;
+    padding: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+}
+
+#calc tr:nth-child(even), #settings tr:nth-child(even) {background-color: #f2f2f2;}
+#calc tr:hover, #settings tr:hover {background-color: #ddd;}
+
+
+
+
+#toprow th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#col1 {
+    background-color: #6495ED;
+    color: white;
+}
+
+#calccol1 {
+    background-color: #E9967A;
+    color: white;
+}
+
+#calcfat {
+    background-color: #A52A2A;
+    color: white;
+}
+#calcmicro {
+    background-color: #A52A2A;
+    color: white;
+}
+#calcmicroR {
+    background-color: #2fb62f;
+    color: white;
+}
+#calcCap1 {
+    background-color: #A52A2A;
+    color: white;
+}
+#calcCap1R {
+    background-color: #A52A2A;
+    color: white;
+}
+
+
+input.enter {
+ height: 80%;
+ width: 50%;
+ border-radius: 15px;
+    text-align: right;
+	font-size:80%;
+outline: none;
+}
+
+input.response {
+ height: 80%;
+ width: 50%;
+ border-radius: 15px;
+    text-align: right;
+	font-size:80%;
+outline: none;
+}
+
+
+input[type="number"]:focus {background-color: lightblue;}
+input[type="text"]:disabled {background-color:white;}
+input[type="button"] {background-color: #e68a00; color: white; padding: 16px 32px; text-decoration: none; margin: 4px 2px;}
+
+
+.b	/* settings */
+   {
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	z-index:1;
+	display:none;
+   }
+
+</style>
+
+<script>
+function s1()
+{
+<!-- Calc fat -->
+document.z.cFatSol.value=((document.z.eFatSol.value/100)*document.z.eServSol.value).toFixed(2);
+
+<!-- Calc creon micro&rounded -->
+document.z.cCMSol.value=(((document.z.eFatSol.value/100)*document.z.eServSol.value)/document.a.setCMscoopsX.value).toFixed(1);
+document.z.cCMSolR.value=(Math.ceil(2*(((document.z.eFatSol.value/100)*document.z.eServSol.value)/document.a.setCMscoopsX.value))/2).toFixed(1);
+
+<!-- Calc creon 10000 capsules&rounded -->
+document.z.cCC1Sol.value=(((document.z.eFatSol.value/100)*document.z.eServSol.value)/document.a.setCC1Y.value).toFixed(1);
+document.z.cCC1SolR.value=(Math.ceil(((document.z.eFatSol.value/100)*document.z.eServSol.value)/document.a.setCC1Y.value)).toFixed(1);
+}
+
+function l1()
+{
+<!-- Calc fat -->
+document.z.cFatLiq.value=((document.z.eFatLiq.value/100)*document.z.eServLiq.value).toFixed(2);
+
+<!-- Calc creon micro&rounded -->
+document.z.cCMLiq.value=(((document.z.eFatLiq.value/100)*document.z.eServLiq.value)/document.a.setCMscoopsX.value).toFixed(1);
+document.z.cCMLiqR.value=(Math.ceil(2*(((document.z.eFatLiq.value/100)*document.z.eServLiq.value)/document.a.setCMscoopsX.value))/2).toFixed(1);
+
+<!-- Calc creon 10000 capsules&rounded -->
+document.z.cCC1Liq.value=(((document.z.eFatLiq.value/100)*document.z.eServLiq.value)/document.a.setCC1Y.value).toFixed(1);
+document.z.cCC1LiqR.value=(Math.ceil(((document.z.eFatLiq.value/100)*document.z.eServLiq.value)/document.a.setCC1Y.value)).toFixed(1);
+}
+
+function s2()
+{
+<!-- Calc fat -->
+document.z.cFatSol2.value=((document.z.eFatSol2.value/document.z.eSSSol2.value)*document.z.eServSol2.value).toFixed(2);
+
+<!-- Calc creon micro&rounded -->
+document.z.cCMSol2.value=(((document.z.eFatSol2.value/document.z.eSSSol2.value)*document.z.eServSol2.value)/document.a.setCMscoopsX.value).toFixed(1);
+document.z.cCMSolR2.value=(Math.ceil(2*(((document.z.eFatSol2.value/document.z.eSSSol2.value)*document.z.eServSol2.value)/document.a.setCMscoopsX.value))/2).toFixed(1);
+
+<!-- Calc creon 10000 capsules&rounded -->
+document.z.cCC1Sol2.value=(((document.z.eFatSol2.value/document.z.eSSSol2.value)*document.z.eServSol2.value)/document.a.setCC1Y.value).toFixed(1);
+document.z.cCC1SolR2.value=(Math.ceil(((document.z.eFatSol2.value/document.z.eSSSol2.value)*document.z.eServSol2.value)/document.a.setCC1Y.value)).toFixed(1);
+}
+
+function l2()
+{
+<!-- Calc fat -->
+document.z.cFatLiq2.value=((document.z.eFatLiq2.value/document.z.eSSLiq2.value)*document.z.eServLiq2.value).toFixed(2);
+
+<!-- Calc creon micro&rounded -->
+document.z.cCMLiq2.value=(((document.z.eFatLiq2.value/document.z.eSSLiq2.value)*document.z.eServLiq2.value)/document.a.setCMscoopsX.value).toFixed(1);
+document.z.cCMLiqR2.value=(Math.ceil(2*(((document.z.eFatLiq2.value/document.z.eSSLiq2.value)*document.z.eServLiq2.value)/document.a.setCMscoopsX.value))/2).toFixed(1);
+
+<!-- Calc creon 10000 capsules&rounded -->
+document.z.cCC1Liq2.value=(((document.z.eFatLiq2.value/document.z.eSSLiq2.value)*document.z.eServLiq2.value)/document.a.setCC1Y.value).toFixed(1);
+document.z.cCC1LiqR2.value=(Math.ceil(((document.z.eFatLiq2.value/document.z.eSSLiq2.value)*document.z.eServLiq2.value)/document.a.setCC1Y.value)).toFixed(1);
+}
+
+
+
+function showblock(d) {
+document.getElementById(d).style.display = "block";
+document.getElementById(d).style.margin = "auto";
+}
+
+function hideblock(d) {
+document.getElementById(d).style.display = "none";
+}
+
+</script>
+
+
+
+
+</head>
+<body>
+<DIV id="mainpage" class="a">
+<form name="z">
+<table id="calc">
+  <tr id="toprow">
+    <td></td>
+    <th>Solids</th>
+    <th>Liquids</th>
+    <th>Solids 2</th>
+    <th>Liquids 2</th>
+  </tr>
+  <tr>
+    <th id="col1">Fat per 100 g/ml</th>
+    <td><input type="number" value="" class="enter" id="eFatSol" onkeydown="s1()" onkeyup="s1()" onchange="s1()" onclick="this.select()"> g</td>
+    <td><input type="number" value="" class="enter" id="eFatLiq" onkeydown="l1()" onkeyup="l1()" onchange="l1()" onclick="this.select()"> g</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <th id="col1">Fat per serve</th>
+    <td>-</td>
+    <td>-</td>
+    <td><input type="number" value="" class="enter" id="eFatSol2" onkeydown="s2()" onkeyup="s2()" onchange="s2()" onclick="this.select()"> g</td>
+    <td><input type="number" value="" class="enter" id="eFatLiq2" onkeydown="l2()" onkeyup="l2()" onchange="l2()" onclick="this.select()"> g</td>
+  </tr>
+  <tr>
+    <th id="col1">Serving Size</th>
+    <td>-</td>
+    <td>-</td>
+    <td><input type="number" value="" class="enter" id="eSSSol2" onkeydown="s2()" onkeyup="s2()" onchange="s2()" onclick="this.select()"> g</td>
+    <td><input type="number" value="" class="enter" id="eSSLiq2" onkeydown="l2()" onkeyup="l2()" onchange="l2()" onclick="this.select()"> ml</td>
+
+  </tr>
+  <tr>
+    <th id="col1">Your serving</th>
+    <td><input type="number" value="" class="enter" id="eServSol" onkeydown="s1()" onkeyup="s1()" onchange="s1()" onclick="this.select()"> g</td>
+    <td><input type="number" value="" class="enter" id="eServLiq" onkeydown="l1()" onkeyup="l1()" onchange="l1()" onclick="this.select()"> ml</td>
+    <td><input type="number" value="" class="enter" id="eServSol2" onkeydown="s2()" onkeyup="s2()" onchange="s2()" onclick="this.select()"> g</td>
+    <td><input type="number" value="" class="enter" id="eServLiq2" onkeydown="l2()" onkeyup="l2()" onchange="l2()" onclick="this.select()"> ml</td>
+  </tr>
+  <tr>
+    <th id="calccol1">Fat in your serving</th>
+    <td id="calcfat"><input type="text" value="" class="response" id="cFatSol" disabled> g</td>
+    <td id="calcfat"><input type="text" value="" class="response" id="cFatLiq" disabled> g</td>
+    <td id="calcfat"><input type="text" value="" class="response" id="cFatSol2" disabled> g</td>
+    <td id="calcfat"><input type="text" value="" class="response" id="cFatLiq2" disabled> g</td>
+  </tr>
+  <tr>
+    <th id="calccol1">Creon Micro Scoops</th>
+    <td id="calcmicro"><input type="text" value="" class="response" id="cCMSol" disabled></td>
+    <td id="calcmicro"><input type="text" value="" class="response" id="cCMLiq" disabled></td>
+    <td id="calcmicro"><input type="text" value="" class="response" id="cCMSol2" disabled></td>
+    <td id="calcmicro"><input type="text" value="" class="response" id="cCMLiq2" disabled></td>
+  </tr>
+  <tr>
+    <th id="calccol1">Creon Micro Scoops rounded</th>
+    <td id="calcmicroR"><input type="text" value="" class="response" id="cCMSolR" disabled></td>
+    <td id="calcmicroR"><input type="text" value="" class="response" id="cCMLiqR" disabled></td>
+    <td id="calcmicroR"><input type="text" value="" class="response" id="cCMSolR2" disabled></td>
+    <td id="calcmicroR"><input type="text" value="" class="response" id="cCMLiqR2" disabled></td>
+  </tr>
+  <tr>
+    <th id="calccol1">Creon 10000</th>
+    <td id="calcCap1"><input type="text" value="" class="response" id="cCC1Sol" disabled></td>
+    <td id="calcCap1"><input type="text" value="" class="response" id="cCC1Liq" disabled></td>
+    <td id="calcCap1"><input type="text" value="" class="response" id="cCC1Sol2" disabled></td>
+    <td id="calcCap1"><input type="text" value="" class="response" id="cCC1Liq2" disabled></td>
+  </tr>
+  <tr>
+    <th id="calccol1">Creon 10000 rounded</th>
+    <td id="calcCap1R"><input type="text" value="" class="response" id="cCC1SolR" disabled></td>
+    <td id="calcCap1R"><input type="text" value="" class="response" id="cCC1LiqR" disabled></td>
+    <td id="calcCap1R"><input type="text" value="" class="response" id="cCC1SolR2" disabled></td>
+    <td id="calcCap1R"><input type="text" value="" class="response" id="cCC1LiqR2" disabled></td>
+  </tr>
+
+
+</table>
+
+<input type="button" onClick="document.z.reset()" value="reset">
+<input type="button" onClick="showblock('settingspage');hideblock('mainpage')" value="settings">
+</form>
+</DIV>
+
+
+<DIV id="settingspage" class="b">
+<form name="a">
+<table id="settings">
+  <tr id="toprow">
+    <td>Type of creon</td>
+    <th>Scoops per 'x' g of fat</th>
+    <th>'x' g of fat</th>
+    <th>Capsules per 'y' g of fat</th>
+    <th>'y' g of fat</th>
+  </tr>
+  <tr>
+    <th id="col1">Creon Micro</th>
+    <td><input type="text" value="1" class="response" id="setCMscoops" disabled></td>
+    <td><input type="text" value="3" class="response" id="setCMscoopsX" disabled></td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <th id="col1">Creon 10000 capsule</th>
+    <td>-</td>
+    <td>-</td>
+    <td><input type="text" value="1" class="response" id="setCC1" disabled></td>
+    <td><input type="text" value="6" class="response" id="setCC1Y" disabled></td>
+  </tr>
+  <tr>
+    <th id="col1">Creon 25000 capsule</th>
+    <td>-</td>
+    <td>-</td>
+    <td><input type="text" value="1" class="response" id="setCC25" disabled></td>
+    <td><input type="text" value="15" class="response" id="setCC25Y" disabled></td>
+  </tr>
+  <tr>
+    <th id="col1">
+Creon 40000 capsule</th>
+    <td>-</td>
+    <td>-</td>
+    <td><input type="text" value="1" class="response" id="setCC4" disabled></td>
+    <td><input type="text" value="24" class="response" id="setCC4Y" disabled></td>
+  </tr>
+</table>
+<input type="button" onClick="hideblock('settingspage');s1();s2();l1();l2();showblock('mainpage')" value="Return to Calculator">
+<DIV>Creon Calc 1.0</DIV>
+</form>
+</DIV>
+</body>
+</html>
