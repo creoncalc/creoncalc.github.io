@@ -95,6 +95,11 @@ input[type="button"] {background-color: #e68a00; color: white; padding: 16px 32p
 	display:none;
    }
 
+.hide	/* hide */
+   {
+	display:none;
+   }
+
 </style>
 
 <script>
@@ -172,7 +177,7 @@ document.getElementById(d).style.display = "none";
 
 </head>
 <body>
-<DIV id="mainpage" class="a">
+<DIV id="mainpage">
 <form name="z">
 <table id="calc">
   <tr id="toprow">
@@ -232,14 +237,14 @@ document.getElementById(d).style.display = "none";
     <td id="calcmicroR"><input type="text" value="" class="response" id="cCMSolR2" disabled></td>
     <td id="calcmicroR"><input type="text" value="" class="response" id="cCMLiqR2" disabled></td>
   </tr>
-  <tr>
+  <tr class="hide">
     <th id="calccol1">Creon 10000</th>
     <td id="calcCap1"><input type="text" value="" class="response" id="cCC1Sol" disabled></td>
     <td id="calcCap1"><input type="text" value="" class="response" id="cCC1Liq" disabled></td>
     <td id="calcCap1"><input type="text" value="" class="response" id="cCC1Sol2" disabled></td>
     <td id="calcCap1"><input type="text" value="" class="response" id="cCC1Liq2" disabled></td>
   </tr>
-  <tr>
+  <tr class="hide">
     <th id="calccol1">Creon 10000 rounded</th>
     <td id="calcCap1R"><input type="text" value="" class="response" id="cCC1SolR" disabled></td>
     <td id="calcCap1R"><input type="text" value="" class="response" id="cCC1LiqR" disabled></td>
@@ -297,7 +302,7 @@ Creon 40000 capsule</th>
   </tr>
 </table>
 <input type="button" onClick="hideblock('settingspage');s1();s2();l1();l2();showblock('mainpage')" value="Return to Calculator">
-<DIV>Creon Calc 1.0</DIV>
+<DIV>Creon Calc 1.1</DIV>
 </form>
 </DIV>
 </body>
